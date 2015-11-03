@@ -553,14 +553,19 @@
               <FilePath>..\..\User\usart1.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\bsp_led.c</FilePath>
-            </File>
-            <File>
               <FileName>tool.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\tool.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\led.c</FilePath>
             </File>
           </Files>
         </Group>

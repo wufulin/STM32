@@ -14,8 +14,9 @@
   
 #include "stm32f10x.h"
 #include "usart1.h"
-#include "bsp_led.h"
+#include "led.h"
 #include "tool.h"
+#include "key.h"
 
 
 /**
@@ -26,30 +27,30 @@
 int main(void)
 {
 	/* USART1 config 115200 8-N-1 */
-	USART1_Config();
+//	USART1_Config();
 	
-	LED_GPIO_Config();	
+	LED_GPIO_Config();
+	LED1(ON);	
 	
-	printf("\r\n this is a printf demo \r\n");
-//	scanf("\r\n 欢迎使用野火M3实验板 \r\n");
+	Key_GPIO_Config();
 	
-	for(;;)
-	{
-		printf("\r\n this is a printf demo \r\n");
-		
-		LED3(OFF); LED1(ON); LED2(OFF);			// 亮
-		Delay(0xAFFFEF);	
-		//LED1(OFF);          // 灭
-		
-		LED1(OFF); LED2(ON); LED3(OFF);
-		Delay(0xAFFFEF);
-		//LED2(OFF);
-		
-		LED2(OFF); LED3(ON); LED1(OFF); 
-		Delay(0xAFFFEF);
-		//LED3(OFF);	
-		
-		//scanf("\r\n 123 \r\n");		
+//	for(;;)
+//	{	
+//		LED3(OFF); LED1(ON); LED2(OFF);			// 亮
+//		Delay(0xAFFFEF);	
+//		
+//		LED1(OFF); LED2(ON); LED3(OFF);
+//		Delay(0xAFFFEF);
+//		
+//		LED2(OFF); LED3(ON); LED1(OFF); 
+//		Delay(0xAFFFEF);	
+//	}
+	
+	while(1){
+		if(Key_Scan(GPIOA, GPIO_Pin_0) == KEY_ON){
+			// LED1反转
+			GPIO_WriteBit(GPIOB, GPIO_Pin_0, (BitAction)((1-GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_0))));
+		}
 	}
 }
 

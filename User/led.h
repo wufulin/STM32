@@ -12,19 +12,20 @@
 
 // 带参宏，可以像内联函数一样使用 GPIO_SetBits引脚置1函数 GPIO_ResetBits引脚清零函数
 #define LED1(a) if (a) \
-					GPIO_SetBits(GPIOD, GPIO_Pin_3);\
+					GPIO_ResetBits(GPIOB, GPIO_Pin_0);\
 					else \
-					GPIO_ResetBits(GPIOD, GPIO_Pin_3);
+					GPIO_SetBits(GPIOB, GPIO_Pin_0);
 
 #define LED2(a) if (a) \
-					GPIO_SetBits(GPIOD, GPIO_Pin_6);\
+					GPIO_ResetBits(GPIOF, GPIO_Pin_7);\
 					else \
-					GPIO_ResetBits(GPIOD, GPIO_Pin_6);
+					GPIO_SetBits(GPIOF, GPIO_Pin_7);
 					
 #define LED3(a) if (a) \
-					GPIO_SetBits(GPIOB, GPIO_Pin_5);\
+					GPIO_ResetBits(GPIOF, GPIO_Pin_8);\
 					else \
-					GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+					GPIO_SetBits(GPIOF, GPIO_Pin_8);
+
 					
 void LED_GPIO_Config(void);
 

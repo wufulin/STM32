@@ -26,7 +26,10 @@
 					else \
 					GPIO_SetBits(GPIOF, GPIO_Pin_8);
 
-					
+// 直接操作寄存器的方法控制IO
+#define digitalToggle(p,i) {p->ODR^=i;} //输出反转状态
+#define LED1_TOGGLE() digitalToggle(GPIOB, GPIO_Pin_0)
+
 void LED_GPIO_Config(void);
 
 #endif /* __LED_H */

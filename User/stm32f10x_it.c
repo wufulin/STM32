@@ -23,6 +23,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+#include "led.h"
+#include "systick.h"
+#include "breathing.h"
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -134,6 +137,7 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+	TimingDelay_Decrement();
 }
 
 /******************************************************************************/
@@ -153,8 +157,26 @@ void SysTick_Handler(void)
 }*/
 
 /**
-  * @}
-  */ 
+ * @brief
+ * @param 	None
+ * @retval None
+ */ 
+void EXTI15_10_IRQHandler(void)
+{
+	if(EXTI_GetITStatus(EXTI_Line13) != RESET){
+		LED1_TOGGLE();
+		EXTI_ClearITPendingBit(EXTI_Line13);
+	}
+}
 
+/**
+ * @brief
+ * @param 	None
+ * @retval  None
+ */ 
+void TIM3_IRQHandler(void)
+{
+	Update_TIM3_CCR();
+}
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
